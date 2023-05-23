@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -13,7 +14,7 @@ SECRET_KEY = 'django-insecure-#t1a!&urh%1z^#qfy0)4hk=d16fepz-c1(jm9f2_vum_2g*y__
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default='127.0.0.1').split(" ")
 
 
 # Application definition
@@ -64,11 +65,11 @@ WSGI_APPLICATION = 'thesis_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'myuser',
-        'PASSWORD': 'mypassword',
-        'HOST': 'db',
-        'PORT': 5432,
+        'NAME': os.environ.get('SQL_DATABASE', 'db_for_test'),
+        'USER': os.environ.get('SQL_USER', 'postgres_user'),
+        'PASSWORD': os.environ.get('SQL_PASSWORD', 'postgres_password'),
+        'HOST': os.environ.get('SQL_HOST', 'localhost'),
+        'PORT': os.environ.get('SQL_PORT', '5432'),
     }
 }
 
