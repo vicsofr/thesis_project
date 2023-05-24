@@ -20,9 +20,22 @@ source venv/bin/activate
 docker-compose up -d
 ```
 
+## Создание superuser
+```shell script
+docker-compose run app python manage.py createsuperuser
+```
+
 ## Документация
-Документация проекта доступна по ссылке после запуска проекта: [*Company API*](http://0.0.0.0:8000/deals/post_deals_csv)
+Документация проекта доступна по ссылке после запуска проекта: [*Company API*](http://0.0.0.0:8000/swagger)
 
 ## Описание API и работы с проектом
-* Пройдите по
+* Запустите проект;
+* Создайте суперюзера для работы с API, требующими авторизации;
+* Администрационная панель для работы с моделями: [*Admin panel*](http://0.0.0.0:8000/admin);
+* Для создания или получения списка сотрудников: [*GET POST /employees*](http://0.0.0.0:8000/company/employees);
+* Для получения информации/изменения/удаления информации о сотруднике: [*GET PUT DELETE /employees/id*](http://0.0.0.0:8000/company/employees/EMPLOYEE_ID);
+* Для получения списка департаментов: [*GET /departments*](http://0.0.0.0:8000/company/departments)
+
+
+
 ###### _Python 3.9.5_

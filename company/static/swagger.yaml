@@ -8,10 +8,18 @@ paths:
       summary: "Get a list of employees"
       description: "Retrieve a list of employees with optional filtering by last name."
       parameters:
+        - name: page
+          in: query
+          description: "Employee list page."
+          type: int
         - name: last_name
           in: query
           description: "Filter employees by last name."
           type: string
+        - name: department
+          in: query
+          description: "Filter employees by department id."
+          type: int
       responses:
         200:
           description: "OK"
