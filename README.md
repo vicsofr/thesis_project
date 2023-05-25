@@ -32,9 +32,10 @@ docker-compose run app python manage.py createsuperuser
 * Запустите проект;
 * Создайте суперюзера для работы с API, требующими авторизации;
 * Администрационная панель для работы с моделями: [*Admin panel*](http://0.0.0.0:8000/admin);
-* Для создания или получения списка сотрудников: [*GET POST /employees*](http://0.0.0.0:8000/company/employees);
-* Для получения информации/изменения/удаления информации о сотруднике: [*GET PUT DELETE /employees/id*](http://0.0.0.0:8000/company/employees/EMPLOYEE_ID);
-* Для получения списка департаментов: [*GET /departments*](http://0.0.0.0:8000/company/departments)
+* Список методов REST API: [*API /company*](http://0.0.0.0:8000/company);
+* Для создания или получения списка сотрудников: [*GET POST /company/employees*](http://0.0.0.0:8000/company/employees);
+* Для получения информации/изменения/удаления информации о сотруднике: [*GET PUT DELETE /company/employees/id*](http://0.0.0.0:8000/company/employees/EMPLOYEE_ID);
+* Для получения списка департаментов: [*GET /company/departments*](http://0.0.0.0:8000/company/departments)
 
 
 

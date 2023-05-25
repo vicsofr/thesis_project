@@ -1,26 +1,15 @@
-from rest_framework import generics, permissions
-import urllib.parse
+import urllib
 
-from company.models import Department, Employee
-from company.serializers import DepartmentSerializer, EmployeeSerializer
+from rest_framework import viewsets, permissions
+
+from company.models import Employee, Department
+from company.serializers import EmployeeSerializer, DepartmentSerializer
 
 
-class EmployeeListCreateView(generics.ListCreateAPIView):
+class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     permission_classes = [permissions.IsAuthenticated]
-
-    def get(self, request, *args, **kwargs):
-        """
-        Get a list of employees.
-        """
-        return self.list(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        """
-        Create a new employee.
-        """
-        return self.create(request, *args, **kwargs)
 
     def get_queryset(self):
         """
@@ -37,38 +26,7 @@ class EmployeeListCreateView(generics.ListCreateAPIView):
         return queryset
 
 
-class EmployeeRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    allowed_methods = ['GET', 'PUT', 'DELETE']
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get(self, request, *args, **kwargs):
-        """
-        Retrieve an employee.
-        """
-        return self.retrieve(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        """
-        Update an employee.
-        """
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        """
-        Delete an employee.
-        """
-        return self.destroy(request, *args, **kwargs)
-
-
-class DepartmentListView(generics.ListAPIView):
+class DepartmentViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     permission_classes = [permissions.AllowAny]
-
-    def get(self, request, *args, **kwargs):
-        """
-        Get a list of departments.
-        """
-        return self.list(request, *args, **kwargs)
